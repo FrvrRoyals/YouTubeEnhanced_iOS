@@ -8,8 +8,8 @@ Feel free to visit any of the links in this repo or the official repo itself if 
 
 ### Current YouTube Enhanced (uYouEnhanced) Build Version:
 
-![YouTube](https://img.shields.io/badge/YouTube-20.18.4)
-![uYou](https://img.shields.io/badge/uYou-3.0.4)
+![Static Badge](https://img.shields.io/badge/YouTube-20.18.4?color=red)
+![Static Badge](https://img.shields.io/badge/uYou-3.0.4?color=red)
 
 <p align="center">
   <a href="https://user-images.githubusercontent.com/78001398/271790092-006e81cc-715a-4fbc-aff6-15832e2da8c4.png">
