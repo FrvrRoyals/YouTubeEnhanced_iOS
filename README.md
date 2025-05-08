@@ -6,8 +6,9 @@ I would just have it private, but GitHub doesn't allow repos on a fork network t
 
 Feel free to visit any of the links in this repo or the official repo itself if anything here interests you.
 
-### Current YouTube Enhanced (uYouEnhanced) Build Version:
+### Current YouTube Enhanced (uYouEnhanced) Build Versions:
 
+    YouTube Enhanced (uYouEnhanced) - 20.18.4-3.0.4
     YouTube - 20.18.4
     uYou - 3.0.4
 
