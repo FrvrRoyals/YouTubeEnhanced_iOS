@@ -1,5 +1,11 @@
 # YouTube Enhanced for iOS (uYouEnhanced)
 
+**This is not an official fork & it is simply for personal use only, this repo will not have any official releases whatsoever.**
+
+I would just have it private, but GitHub doesn't allow repos on a fork network to be private.
+
+Feel free to visit any of the links in this repo or the official repo itself if anything here interests you.
+
 <p align="center">
   <a href="https://user-images.githubusercontent.com/78001398/271790092-006e81cc-715a-4fbc-aff6-15832e2da8c4.png">
     <img src="https://user-images.githubusercontent.com/78001398/271790092-006e81cc-715a-4fbc-aff6-15832e2da8c4.png" alt="UYOUPLUS_LOGO" width="200" height="200">
