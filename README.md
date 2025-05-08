@@ -17,7 +17,6 @@
   <a href="#credits"><img src="https://img.shields.io/badge/Credits-C6005A?style=for-the-badge&labelColor=C6005A" alt="Credits Badge"></a><br>
   <a href="#features"><img src="https://img.shields.io/badge/Features-C6005A?style=for-the-badge&labelColor=C6005A" alt="Features Badge"></a><br>
   <a href="#known-issues"><img src="https://img.shields.io/badge/Known%20Issues-C6005A?style=for-the-badge&labelColor=C6005A" alt="Known Issues Badge"></a><br>
-  <a href="#download"><img src="https://img.shields.io/badge/Download-C6005A?style=for-the-badge&labelColor=C6005A" alt="Download Badge"></a><br>
   <a href="#building"><img src="https://img.shields.io/badge/Building-C6005A?style=for-the-badge&labelColor=C6005A" alt="Building Badge"></a><br>
   <a href="#installation"><img src="https://img.shields.io/badge/Installation-C6005A?style=for-the-badge&labelColor=C6005A" alt="Installation Badge"></a><br>
   <a href="#support-the-developers"><img src="https://img.shields.io/badge/Support%20the%20Developers-C6005A?style=for-the-badge&labelColor=C6005A" alt="Support the Developers Badge"></a><br>
