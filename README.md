@@ -269,19 +269,6 @@
 
 - Issues related to **uYouEnhanced** can be found [here](https://github.com/arichornlover/uYouEnhanced/issues/).
 
-## Download
-
-- The latest version of **uYouEnhanced** can be found under [Releases](https://github.com/arichornlover/uYouEnhanced/releases/latest).
-- **Compatibility:** Requires iOS/iPadOS 15.0 or later.
-- For AltStore user: 
-
-  - My official AltStore repo (uYouEnhanced - **iOS 15+**): https://therealfoxster.github.io/altsource-viewer/view/?source=https://raw.githubusercontent.com/arichornlover/arichornlover.github.io/main/apps.json
-
-  - My alternative AltStore repo (uYouEnhanced - **iOS 14+ - mainly for Trollstore users**): https://therealfoxster.github.io/altsource-viewer/view/?source=https://raw.githubusercontent.com/arichornlover/arichornlover.github.io/main/apps-legacy.json - not sure if i can update this ipa. this IPA will be locked in YouTube Version **19.20.2**
-
-  - [Open in AltStore (v19.49.7-3.0.4)](https://tinyurl.com/muanwkrs) - It will take a while to install because AltStore needs to download the IPA first.
-  - NEWS - Nov 27 2024: Please be aware that some of the **uYou** features aren't working in newer versions of YouTube.
-
 <details>
   <summary>Version information (last updated: Mar 19, 2025)</summary>
 
