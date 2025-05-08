@@ -1,4 +1,4 @@
-# uYouEnhanced
+# YouTube Enhanced for iOS (uYouEnhanced)
 
 <p align="center">
   <a href="https://user-images.githubusercontent.com/78001398/271790092-006e81cc-715a-4fbc-aff6-15832e2da8c4.png">
