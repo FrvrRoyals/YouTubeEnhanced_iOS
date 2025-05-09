@@ -1,5 +1,11 @@
 # YouTube Enhanced for iOS (uYouEnhanced)
 
+<p align="center">
+  <a href="https://user-images.githubusercontent.com/78001398/271790092-006e81cc-715a-4fbc-aff6-15832e2da8c4.png">
+    <img src="https://user-images.githubusercontent.com/78001398/271790092-006e81cc-715a-4fbc-aff6-15832e2da8c4.png" alt="UYOUPLUS_LOGO" width="200" height="200">
+  </a>
+</p>
+
 **This is not an official fork & it is simply for personal use only, this repo will not have any official releases whatsoever.**
 
 I would just have it private, but GitHub doesn't allow repos on a fork network to be private.
@@ -10,12 +16,6 @@ Feel free to visit any of the links in this repo or the official repo itself if 
 
 ![YouTube](https://img.shields.io/badge/YouTube-20.18.4-white?labelColor=darkred&link=https%3A%2F%2Fdecrypt.day%2Fapp%2Fid544007664)
 ![uYou](https://img.shields.io/badge/uYou-3.0.4-white?labelColor=fe4254&link=https%3A%2F%2Fgithub.com%2Farichornlover%2FuYouEnhanced)
-
-<p align="center">
-  <a href="https://user-images.githubusercontent.com/78001398/271790092-006e81cc-715a-4fbc-aff6-15832e2da8c4.png">
-    <img src="https://user-images.githubusercontent.com/78001398/271790092-006e81cc-715a-4fbc-aff6-15832e2da8c4.png" alt="UYOUPLUS_LOGO" width="200" height="200">
-  </a>
-</p>
 
 <p align="center">
   <a href="https://github.com/qnblackcat/uYouPlus/assets/77606385/c1a1c58a-5d4d-48a6-bb98-d00086719ccc">
