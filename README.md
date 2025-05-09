@@ -325,7 +325,7 @@ Feel free to visit any of the links in this repo or the official repo itself if 
 | MiRO92 | uYou 3.0 | ~v18.06.6 - v18.18.2~ | iOS 14.0 - iOS 15.8.3 |
 | MiRO92 | uYou 3.0.1 | ~v18.19.1 - v18.41.5~ | iOS 14.0 - iOS 18.3.2 |
 | MiRO92 | uYou 3.0.2 / 3.0.3 | v19.06.2 - v19.15.1 | iOS 15.0 - iOS 18.3.2 |
-| MiRO92 | uYou 3.0.4 | v19.20.2 - v19.22.6 | iOS 15.0 - iOS 18.3.2 |
+| MiRO92 & Royals | uYou 3.0.4 | v19.20.2 - v20.18.4 | iOS 15.0 - iOS 18.4.1 |
 
 # Building
 
