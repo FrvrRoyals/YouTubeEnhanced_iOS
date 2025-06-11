@@ -321,7 +321,7 @@ Feel free to visit any of the links in this repo or the official repo itself if 
 
 | Developer | Tweak Name and Version | App Version Compatibility | iOS Version Compatibility |
 |-----------|-----------------------|--------------------------|--------------------------|
-| MiRO92 & Royals | uYou 3.0.4 | v19.20.2 - v20.18.4 | iOS 15.0 - iOS 26.0.0 |
+| MiRO92 & Royals | uYou 3.0.4 | v19.20.2 - v20.23.3 | iOS 15.0 - iOS 26.0.0 |
 
 # Building
 
