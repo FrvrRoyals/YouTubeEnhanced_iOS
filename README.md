@@ -14,7 +14,7 @@ Feel free to visit any of the links in this repo or the official repo itself if 
 
 ## Current YouTube Enhanced (uYouEnhanced) Build Versions:
 
-![YouTube](https://img.shields.io/badge/YouTube-20.18.4-white?labelColor=darkred&link=https%3A%2F%2Fdecrypt.day%2Fapp%2Fid544007664)
+![YouTube](https://img.shields.io/badge/YouTube-20.23.3-white?labelColor=darkred&link=https%3A%2F%2Fdecrypt.day%2Fapp%2Fid544007664)
 ![uYou](https://img.shields.io/badge/uYou-3.0.4-white?labelColor=fe4254&link=https%3A%2F%2Fgithub.com%2Farichornlover%2FuYouEnhanced)
 
 <p align="center">
