@@ -41,14 +41,16 @@
 #import <YouTubeHeader/YTIPivotBarSupportedRenderers.h>
 #import <YouTubeHeader/YTIPlayerBarDecorationModel.h>
 #import <YouTubeHeader/YTISectionListRenderer.h>
+#import <YouTubeHeader/YTIShowFullscreenInterstitialCommand.h>
 #import <YouTubeHeader/YTIStringRun.h>
+#import <YouTubeHeader/YTIWatchNextResponse.h>
 #import <YouTubeHeader/YTMainAppVideoPlayerOverlayViewController.h>
 #import <YouTubeHeader/YTMainAppVideoPlayerOverlayView.h>
 #import <YouTubeHeader/YTNavigationBarTitleView.h>
 #import <YouTubeHeader/YTPlayerBarController.h>
 #import <YouTubeHeader/YTPlayerBarRectangleDecorationView.h>
 #import <YouTubeHeader/YTPlayerOverlay.h>
- #import <YouTubeHeader/YTPlayerOverlayProvider.h>
+#import <YouTubeHeader/YTPlayerOverlayProvider.h>
 #import <YouTubeHeader/QTMIcon.h>
 #import <YouTubeHeader/YTReelModel.h>
 #import <YouTubeHeader/YTReelWatchPlaybackOverlayView.h>
@@ -60,6 +62,8 @@
 #import <YouTubeHeader/YTWatchPullToFullController.h>
 #import <YouTubeHeader/YTWatchViewController.h>
 #import "uYouPlusThemes.h" // uYouPlus Themes
+
+extern NSBundle *tweakBundle;
 
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
 #define IS_ENABLED(k) [[NSUserDefaults standardUserDefaults] boolForKey:k]
@@ -110,7 +114,6 @@ static NSString *const kHideRightPanel = @"hideRightPanel_enabled";
 static NSString *const kHideFullscreenActions = @"hideFullscreenActions_enabled";
 static NSString *const kHideSuggestedVideo = @"hideSuggestedVideo_enabled";
 static NSString *const kHideHeatwaves = @"hideHeatwaves_enabled";
-static NSString *const kHideDoubleTapToSeekOverlay = @"hideDoubleTapToSeekOverlay_enabled";
 static NSString *const kHideOverlayDarkBackground = @"hideOverlayDarkBackground_enabled";
 static NSString *const kDisableAmbientMode = @"disableAmbientMode_enabled";
 static NSString *const kHideVideosInFullscreen = @"hideVideosInFullscreen_enabled";
@@ -119,13 +122,17 @@ static NSString *const kHideRelatedWatchNexts = @"hideRelatedWatchNexts_enabled"
 static NSString *const kHideBuySuperThanks = @"hideBuySuperThanks_enabled";
 static NSString *const kHideSubscriptions = @"hideSubscriptions_enabled";
 static NSString *const kShortsQualityPicker = @"shortsQualityPicker_enabled";
+static NSString *const kHideShortsClipButton = @"hideShortsClipButton_enabled";
+static NSString *const kHideShortsDownloadButton = @"hideShortsDownloadButton_enabled";
+static NSString *const kHideShortsRemixButton = @"hideShortsRemixButton_enabled";
+static NSString *const kHideShortsStatsButton = @"hideShortsStatsButton_enabled";
 // Video player buttons
 static NSString *const kRedSubscribeButton = @"redSubscribeButton_enabled";
 static NSString *const kHideButtonContainers = @"hideButtonContainers_enabled";
 static NSString *const kHideConnectButton = @"hideConnectButton_enabled";
 static NSString *const kHideShareButton = @"hideShareButton_enabled";
 static NSString *const kHideRemixButton = @"hideRemixButton_enabled";
-static NSString *const kHideThanksButton = @"hideRemixButton_enabled";
+static NSString *const kHideThanksButton = @"hideThanksButton_enabled";
 static NSString *const kHideDownloadButton = @"hideDownloadButton_enabled";
 static NSString *const kHideClipButton = @"hideClipButton_enabled";
 static NSString *const kHideSaveToPlaylistButton = @"hideSaveToPlaylistButton_enabled";
@@ -148,15 +155,14 @@ static NSString *const kHideHomeTab = @"hideHomeTab_enabled";
 static NSString *const kLowContrastMode = @"lowContrastMode_enabled";
 static NSString *const kClassicVideoPlayer = @"classicVideoPlayer_enabled";
 static NSString *const kDisableModernButtons = @"disableModernButtons_enabled";
-static NSString *const kDisableRoundedHints = @"disableRoundedHints_enabled";
 static NSString *const kDisableModernFlags = @"disableModernFlags_enabled";
-static NSString *const kYTNoModernUI = @"ytNoModernUI_enabled";
 static NSString *const kEnableVersionSpoofer = @"enableVersionSpoofer_enabled";
 // Miscellaneous
 static NSString *const kGoogleSignInPatch = @"googleSignInPatch_enabled";
 static NSString *const kAdBlockWorkaroundLite = @"adBlockWorkaroundLite_enabled";
 static NSString *const kAdBlockWorkaround = @"adBlockWorkaround_enabled";
-static NSString *const kYouTabFakePremium = @"youTabFakePremium_enabled";
+static NSString *const kFixPlaybackIssues = @"fixPlaybackIssues_enabled";
+static NSString *const kYTPremiumLogo = @"ytPremiumLogo_enabled";
 static NSString *const kDisableAnimatedYouTubeLogo = @"disableAnimatedYouTubeLogo_enabled";
 static NSString *const kCenterYouTubeLogo = @"centerYouTubeLogo_enabled";
 static NSString *const kHideYouTubeLogo = @"hideYouTubeLogo_enabled";
@@ -183,6 +189,12 @@ static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
 // Always show remaining time in video player - @bhackel
 // Header has been moved to https://github.com/PoomSmart/YouTubeHeader/blob/main/YTPlayerBarController.h
 // Header has been moved to https://github.com/PoomSmart/YouTubeHeader/blob/main/YTInlinePlayerBarContainerView.h
+
+// YouMod Migration
+@interface YouModMigrationManager : NSObject
++ (instancetype)sharedManager;
+- (void)migrateToYouModWithReset:(BOOL)shouldReset;
+@end
 
 // IAmYouTube
 @interface SSOConfiguration : NSObject
@@ -349,6 +361,11 @@ static NSString *const kGoogleSigninFix = @"googleSigninFix_enabled";
 @end
 
 @interface ELMContainerNode : NSObject
+@end
+
+@interface ELMContainerNode (uYouEnhanced)
+- (void)applyRedColorToSubscribeButton:(id)view;
+- (void)hideMatchingSubviews:(id)view;
 @end
 
 @interface YTWrapperSplitView : UIView

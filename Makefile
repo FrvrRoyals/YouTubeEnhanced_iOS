@@ -1,7 +1,29 @@
-export TARGET = iphone:clang:17.5:15.0
-export SDK_PATH = $(THEOS)/sdks/iPhoneOS17.5.sdk/
+ifndef SDK_VERSION
+SDK_VERSION = 18.6
+endif
+
+export TARGET = iphone:clang:$(SDK_VERSION):16.0
+export SDK_PATH = $(THEOS)/sdks/iPhoneOS$(SDK_VERSION).sdk/
 export SYSROOT = $(SDK_PATH)
 export ARCHS = arm64
+
+TWEAK_NAME ?= uYouEnhanced
+DISPLAY_NAME ?= YouTube
+BUNDLE_ID ?= com.google.ios.youtube
+
+ifndef YOUTUBE_VERSION
+YOUTUBE_VERSION = 21.14.4
+endif
+ifndef UYOU_VERSION
+UYOU_VERSION = 3.0.4
+endif
+PACKAGE_NAME = $(TWEAK_NAME)
+PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
+
+$(TWEAK_NAME)_FILES := $(wildcard Sources/*.xm) $(wildcard Sources/*.x) $(wildcard Sources/*.m)
+$(TWEAK_NAME)_FRAMEWORKS = UIKit Foundation AVFoundation AVKit Photos Accelerate CoreMotion GameController VideoToolbox Security MediaPlayer
+$(TWEAK_NAME)_LIBRARIES = bz2 c++ iconv z
+$(TWEAK_NAME)_CFLAGS = -fobjc-arc -Wno-deprecated-declarations -Wno-unused-but-set-variable -DTWEAK_VERSION=\"$(PACKAGE_VERSION)\"
 
 export libcolorpicker_ARCHS = arm64
 export libFLEX_ARCHS = arm64
@@ -15,47 +37,64 @@ export DEBUGFLAG = -ggdb -Wno-unused-command-line-argument -L$(THEOS_OBJ_DIR) -F
 MODULES = jailed
 endif
 
-ifndef YOUTUBE_VERSION
-YOUTUBE_VERSION = 20.50.9
-endif
-ifndef UYOU_VERSION
-UYOU_VERSION = 3.0.4
-endif
-PACKAGE_NAME = $(TWEAK_NAME)
-PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
+$(TWEAK_NAME)_INJECT_DYLIBS = \
+	Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib \
+	$(THEOS_OBJ_DIR)/libFLEX.dylib \
+	$(THEOS_OBJ_DIR)/YTABConfig.dylib \
+	$(THEOS_OBJ_DIR)/YTIcons.dylib \
+	$(THEOS_OBJ_DIR)/YouGroupSettings.dylib \
+	$(THEOS_OBJ_DIR)/YouLoop.dylib \
+	$(THEOS_OBJ_DIR)/YouMute.dylib \
+	$(THEOS_OBJ_DIR)/YouPiP.dylib \
+	$(THEOS_OBJ_DIR)/YouQuality.dylib \
+	$(THEOS_OBJ_DIR)/YouSlider.dylib \
+	$(THEOS_OBJ_DIR)/YouSpeed.dylib \
+	$(THEOS_OBJ_DIR)/YouTimeStamp.dylib \
+	$(THEOS_OBJ_DIR)/YouTubeDislikesReturn.dylib \
+	$(THEOS_OBJ_DIR)/DontEatMyContent.dylib \
+	$(THEOS_OBJ_DIR)/YTHoldForSpeed.dylib \
+	$(THEOS_OBJ_DIR)/YTVideoOverlay.dylib \
+	$(THEOS_OBJ_DIR)/YTweaks.dylib
 
-INSTALL_TARGET_PROCESSES = YouTube
-TWEAK_NAME = uYouEnhanced
-DISPLAY_NAME = YouTube
-BUNDLE_ID = com.google.ios.youtube
+ifeq ($(SPONSORBLOCK_ENABLED),1)
+$(TWEAK_NAME)_INJECT_DYLIBS += $(THEOS_OBJ_DIR)/iSponsorBlock.dylib
+endif
 
-$(TWEAK_NAME)_FILES := $(wildcard Sources/*.xm) $(wildcard Sources/*.x) $(wildcard Sources/*.m)
-$(TWEAK_NAME)_FRAMEWORKS = UIKit Foundation AVFoundation AVKit Photos Accelerate CoreMotion GameController VideoToolbox Security
-$(TWEAK_NAME)_LIBRARIES = bz2 c++ iconv z
-$(TWEAK_NAME)_CFLAGS = -fobjc-arc -Wno-deprecated-declarations -Wno-unused-but-set-variable -DTWEAK_VERSION=\"$(PACKAGE_VERSION)\"
-#uYouLocalization $(TWEAK_NAME)_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib $(THEOS_OBJ_DIR)/uYouLocalization.dylib
-$(TWEAK_NAME)_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib $(THEOS_OBJ_DIR)/libFLEX.dylib $(THEOS_OBJ_DIR)/iSponsorBlock.dylib $(THEOS_OBJ_DIR)/YTABConfig.dylib $(THEOS_OBJ_DIR)/YTIcons.dylib $(THEOS_OBJ_DIR)/YouGroupSettings.dylib $(THEOS_OBJ_DIR)/YouLoop.dylib $(THEOS_OBJ_DIR)/YouMute.dylib $(THEOS_OBJ_DIR)/YouPiP.dylib $(THEOS_OBJ_DIR)/YouQuality.dylib $(THEOS_OBJ_DIR)/YouSlider.dylib $(THEOS_OBJ_DIR)/YouSpeed.dylib $(THEOS_OBJ_DIR)/YouTimeStamp.dylib $(THEOS_OBJ_DIR)/YouTubeDislikesReturn.dylib $(THEOS_OBJ_DIR)/DontEatMyContent.dylib $(THEOS_OBJ_DIR)/YTHoldForSpeed.dylib $(THEOS_OBJ_DIR)/YTUHD.dylib $(THEOS_OBJ_DIR)/YTVideoOverlay.dylib
+ifeq ($(YTUHD_ENABLED),1)
+$(TWEAK_NAME)_INJECT_DYLIBS += $(THEOS_OBJ_DIR)/YTUHD.dylib
+endif
+
 $(TWEAK_NAME)_EMBED_LIBRARIES = $(THEOS_OBJ_DIR)/libcolorpicker.dylib
 $(TWEAK_NAME)_EMBED_FRAMEWORKS = $(_THEOS_LOCAL_DATA_DIR)/$(THEOS_OBJ_DIR_NAME)/install_Alderis.xcarchive/Products/var/jb/Library/Frameworks/Alderis.framework
 $(TWEAK_NAME)_EMBED_BUNDLES = $(wildcard Bundles/*.bundle)
 $(TWEAK_NAME)_EMBED_EXTENSIONS = $(wildcard Extensions/*.appex)
 
-include $(THEOS)/makefiles/common.mk
-ifneq ($(JAILBROKEN),1)
-#uYouLocalization SUBPROJECTS += Tweaks/Alderis Tweaks/uYouLocalization
-SUBPROJECTS += Tweaks/Alderis Tweaks/DontEatMyContent Tweaks/FLEXing/libflex Tweaks/iSponsorBlock Tweaks/Return-YouTube-Dislikes Tweaks/YTABConfig Tweaks/YouGroupSettings Tweaks/YTIcons Tweaks/YouLoop Tweaks/YouMute Tweaks/YouPiP Tweaks/YouQuality Tweaks/YouSlider Tweaks/YouSpeed Tweaks/YouTimeStamp Tweaks/YTHoldForSpeed Tweaks/YTUHD Tweaks/YTVideoOverlay 
-include $(THEOS_MAKE_PATH)/aggregate.mk
-endif
-include $(THEOS_MAKE_PATH)/tweak.mk
-
+INSTALL_TARGET_PROCESSES = YouTube
 REMOVE_EXTENSIONS = 1
 CODESIGN_IPA = 0
+FINALPACKAGE = 1
 
 UYOU_PATH = Tweaks/uYou
 UYOU_DEB = $(UYOU_PATH)/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb
 UYOU_DYLIB = $(UYOU_PATH)/Library/MobileSubstrate/DynamicLibraries/uYou.dylib
 UYOU_BUNDLE = $(UYOU_PATH)/Library/Application\ Support/uYouBundle.bundle
 
+include $(THEOS)/makefiles/common.mk
+
+ifneq ($(JAILBROKEN),1)
+SUBPROJECTS += Tweaks/Alderis Tweaks/DontEatMyContent Tweaks/FLEXing/libflex Tweaks/Return-YouTube-Dislikes Tweaks/YTABConfig Tweaks/YouGroupSettings Tweaks/YTIcons Tweaks/YouLoop Tweaks/YouPiP Tweaks/YouQuality Tweaks/YouSlider Tweaks/YouSpeed Tweaks/YouTimeStamp Tweaks/YTHoldForSpeed Tweaks/YTVideoOverlay Tweaks/YTweaks
+ifeq ($(SPONSORBLOCK_ENABLED),1)
+SUBPROJECTS += Tweaks/iSponsorBlock
+endif
+ifeq ($(YTUHD_ENABLED),1)
+SUBPROJECTS += Tweaks/YTUHD
+endif
+include $(THEOS_MAKE_PATH)/aggregate.mk
+endif
+
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+.PHONY: internal-clean before-all before-package
 internal-clean::
 	@rm -rf $(UYOU_PATH)/*
 
@@ -74,7 +113,11 @@ before-all::
 		if [[ ! -f $(UYOU_DYLIB) || ! -d $(UYOU_BUNDLE) ]]; then \
 			$(PRINT_FORMAT_ERROR) "Failed to extract uYou"; exit 1; \
 		fi; \
-	fi;
+	fi; \
+	perl -pi -e 's/3\.0\.4/3.0.5/g' $(UYOU_DYLIB); \
+	python3 Scripts/rebrand_uyou.py $(UYOU_DYLIB); \
+	$(PRINT_FORMAT_BLUE) "uYou rebranded to 3.0.5 (Unofficial Build)";
+
 else
 before-package::
 	@mkdir -p $(THEOS_STAGING_DIR)/Library/Application\ Support; cp -r Localizations/uYouPlus.bundle $(THEOS_STAGING_DIR)/Library/Application\ Support/

@@ -217,6 +217,15 @@
 "SHORTS_QUALITY_PICKER" = "Shorts Quality Picker";
 "SHORTS_QUALITY_PICKER_DESC" = "Enables the YouTube Shorts Quality Picker";
 
+"HIDE_SHORTS_CLIP_BUTTON" = "Hide Clip Button on Shorts";
+"HIDE_SHORTS_CLIP_BUTTON_DESC" = "Hides the Clip button when a Short is paused.";
+"HIDE_SHORTS_DOWNLOAD_BUTTON" = "Hide Download Button on Shorts";
+"HIDE_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hides the Download button when a Short is paused.";
+"HIDE_SHORTS_REMIX_BUTTON" = "Hide Remix Button on Shorts";
+"HIDE_SHORTS_REMIX_BUTTON_DESC" = "Hides the Remix button when a Short is paused.";
+"HIDE_SHORTS_STATS_BUTTON" = "Hide Stats for Nerds Button on Shorts";
+"HIDE_SHORTS_STATS_BUTTON_DESC" = "Hides the Stats for Nerds button when a Short is paused.";
+
 "VIDEO_PLAYER_BUTTON_OPTIONS" = "Video Player Button Options";
 
 "RED_SUBSCRIBE_BUTTON" = "Red Subscribe Button";
@@ -279,6 +288,9 @@
 "ADBLOCK_WORKAROUND_LITE_DESC" = "Uses weaker adblocking code, this will disable uYou's Adblocking Option.";
 "ADBLOCK_WORKAROUND" = "AdBlock Workaround";
 "ADBLOCK_WORKAROUND_DESC" = "Uses stronger adblocking code.";
+
+"FIX_PLAYBACK_ISSUES" = "Fix playback issues";
+"FIX_PLAYBACK_ISSUES_DESC" = "Fixes videos stopping mid-playback with an endless spinner by using Apple's native player instead of YouTube's Ham player. Turning this on will disable VP9 and AV1.";
 "FAKE_PREMIUM" = "Fake Premium";
 "FAKE_PREMIUM_DESC" = "Uses Premium logo and creates fake buttons in the You tab. Will disable animated YouTube logo.";
 "FAKE_PREMIUM_WARNING" = "The *You* Tab doesn't exist in v%@, fake buttons will not be created.\nBut the *Fake Premium Logo* will still work.";
